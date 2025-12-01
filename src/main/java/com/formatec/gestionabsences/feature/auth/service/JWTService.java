@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -66,12 +67,11 @@ public class JWTService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts
-                .parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        return Jwts.parser()  // ← Nouvelle syntaxe 0.12.x : parser() retourne directement JwtParserBuilder
+                .verifyWith((SecretKey) getSignInKey())  // ← Remplace setSigningKey() (déprécié)
+                .build()  // ← Construit le parser
+                .parseSignedClaims(token)  // ← Parse le token signé
+                .getPayload();  // ← Récupère les claims
     }
 
     private Key getSignInKey() {

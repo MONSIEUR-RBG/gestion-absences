@@ -1,4 +1,4 @@
-package com.formatec.gestionabsences.users.configuration;
+package com.formatec.gestionabsences;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

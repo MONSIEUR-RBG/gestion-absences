@@ -101,7 +101,7 @@ public class DemandeService {
         d.setValideur(valideur);
         demandeRepo.save(d);
 
-        HistoriqueAction.Builder histBuilder = HistoriqueAction.builder()
+    var histBuilder=HistoriqueAction.builder()
                 .demande(d)
                 .utilisateur(valideur)
                 .action(action)

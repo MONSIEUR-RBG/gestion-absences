@@ -30,6 +30,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/retours/**").hasAnyRole("RH", "AGENT", "SUPER_ADMIN")
+                        .requestMatchers("/api/remplacements/**").hasAnyRole("RESP_REMPLACANT", "SUPER_ADMIN", "CHEF_DEPARTEMENT")
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("SUPER_ADMIN")
                         .requestMatchers("/api/chef/**").hasAnyRole("CHEF_DEPARTEMENT", "SUPER_ADMIN")

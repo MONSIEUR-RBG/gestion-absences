@@ -1,5 +1,5 @@
 package com.formatec.gestionabsences.core.entity;
 
-enum StatutRemplacement {
+public enum StatutRemplacement {
     PLANIFIE, EFFECTUE, ANNULE
 }

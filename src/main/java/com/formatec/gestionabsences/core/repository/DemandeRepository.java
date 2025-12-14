@@ -15,7 +15,8 @@ public interface DemandeRepository extends JpaRepository<Demande, Long> {
     List<Demande> findByStatut(StatutDemande statut);
     List<Demande> findByDateRetourEffectifIsNullAndDateReprisePrevueBefore(LocalDate date);
 
-    Collection<Object> findByDepartementAndStatut(Departement departement, StatutDemande statutDemande);
 
-    Collection<Object> findByDemandeurEmail(String email);
+    List<Demande> findByDemandeurEmail(String email);
+
+    List<Demande> findByDepartementAndStatut(Departement departement, StatutDemande statutDemande);
 }

@@ -65,4 +65,12 @@ public class UserEntity implements UserDetails {
         return true;
     }
 
+    public String getPrenom() {
+        return firstName;
+    }
+    public String getNom() {
+        return lastName;
+    }
 }
+
+
